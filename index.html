@@ -15,23 +15,23 @@
 
     <md-sidenav md-is-locked-open="true" class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
 
-        <md-list>
-            <md-item>
-                <a href="/veedorFront/category/">
+        <md-list ng-controller="MainCtrl">
+		{{titulo}}
+            <md-item ng-repeat="item in menu">
+                <a>
                     <md-item-content md-ink-ripple layout="row" layout-aling="start center">
                         <div class="inset">
-                            Settings
+                            <ng-md-icon icon="{{item.icon}}"></ng-md-icon>
                         </div>
-
+						<div class="inset">{{item.title}}</div>
                     </md-item-content>
                 </a>
             </md-item>
         </md-list>
-
     </md-sidenav>
-
+	
     <md-content flex id="content">
-        <div ng-view></div>
+        <ng-view>
     </md-content>
 </div>
 
@@ -44,6 +44,7 @@
 <script src="app/lib/angular-material-icons/angular-material-icons.min.js" type="text/javascript"></script>
 
 <script src="app/js/app.js"></script>
+<script src="app/js/controllers/mainController.js"></script>
 
 </body>
 </html>

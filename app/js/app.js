@@ -11,12 +11,24 @@ var app = angular.module('veedorApp',
         'ngResource'
     ]);
 
+/* Routes Configuration */
 app.config(function ($routeProvider){
     $routeProvider
+		.when('/', {
+			controller: "MainCtrl"
+		})
         .when('/category', {
             controller: "CategoryCtrl",
             templateUrl: "tpl/categories.html"
         })
-
-
+        .otherwise({
+            redirectTo: '/'
+        });
 });
+
+/* Theming Configuration */
+app.config(function($mdThemingProvider){
+	$mdThemingProvider.theme('default')
+	.primaryPalette('pink')
+	.accentPalette('orange')
+})
