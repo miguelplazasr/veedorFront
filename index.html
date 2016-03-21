@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title></title>
     <link href="app/lib/angular-material/angular-material.min.css" rel="stylesheet">
+	<link href="app/lib/angular-material-data-table/md-data-table.css" rel="stylesheet">
 </head>
 <body ng-app="veedorApp" ng-cloak layout="column">
 
@@ -14,24 +15,11 @@
 <div layout="row" flex>
 
     <md-sidenav md-is-locked-open="true" class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
-
-        <md-list ng-controller="MainCtrl">
-		{{titulo}}
-            <md-item ng-repeat="item in menu">
-                <a>
-                    <md-item-content md-ink-ripple layout="row" layout-aling="start center">
-                        <div class="inset">
-                            <ng-md-icon icon="{{item.icon}}"></ng-md-icon>
-                        </div>
-						<div class="inset">{{item.title}}</div>
-                    </md-item-content>
-                </a>
-            </md-item>
-        </md-list>
+	<ng-include src="'/tpl/includes/sidenav.html'"></ng-include>
     </md-sidenav>
 	
     <md-content flex id="content">
-        <ng-view>
+        <div ng-view></div>
     </md-content>
 </div>
 
@@ -42,8 +30,11 @@
 <script src="app/lib/angular-route/angular-route.min.js" type="text/javascript"></script>
 <script src="app/lib/angular-resource/angular-resource.min.js" type="text/javascript"></script>
 <script src="app/lib/angular-material-icons/angular-material-icons.min.js" type="text/javascript"></script>
+<script src="app/lib/angular-material-data-table/md-data-table.js" type="text/javascript"></script>
+
 
 <script src="app/js/app.js"></script>
+<script src="app/js/services.js"></script>
 <script src="app/js/controllers/mainController.js"></script>
 
 </body>

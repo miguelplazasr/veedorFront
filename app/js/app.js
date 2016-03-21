@@ -8,7 +8,8 @@ var app = angular.module('veedorApp',
         'ngMaterial',
         'ngMdIcons',
         'ngRoute',
-        'ngResource'
+        'ngResource',
+		'md.data.table',
     ]);
 
 /* Routes Configuration */
@@ -21,6 +22,10 @@ app.config(function ($routeProvider){
             controller: "CategoryCtrl",
             templateUrl: "tpl/categories.html"
         })
+		.when('/category/new', {
+			controller: "CategoryCtrl",
+			templateUrl: "tpl/categories_new.html"
+		})
         .otherwise({
             redirectTo: '/'
         });

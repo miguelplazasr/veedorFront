@@ -1,0 +1,38 @@
+<md-card>
+<md-card-title>
+<md-card-title-text>
+<span class="md-headline">{{ title }}</span>
+      <span class="md-subhead">Sub header</span>
+</md-card-title-text>
+</md-card-title>
+
+<md-card-content>
+
+<form name="categoryForm" ng-submit="saveCategory(rsCategory)" novalidate>
+
+    <md-input-container>
+      <label>Name</label>
+      <input ng-model="rsCategory.name">
+    </md-input-container>
+	
+    <md-input-container>
+      <label>Description</label>
+      <input ng-model="rsCategory.description">
+    </md-input-container>
+	
+	<button>Send</button>
+	
+	
+</form>
+
+</md-card-content>
+ <md-divider></md-divider>
+
+<md-card-actions layout="row" layout-align="end center">
+      <md-button class="md-raised" aria-label="Add" ng-click="showAdd($event)" ng-href="/#/category/new">
+  	<ng-md-icon icon="add"></ng-md-icon>Add Category
+  </md-button>
+
+</md-card-actions>
+
+  </md-card>
