@@ -23,12 +23,12 @@ app.factory('Category', function($resource) {
 			method: 'GET',
 			url: url + 'new.json'
 		},
-		delete: {
-			method: 'DELETE',
-			params: {
-				id: '@id'
-			}
-		}
+        delete: {
+            method: 'DELETE',
+            params: {
+                id: '@id'
+            }
+        }
     });
 
     return category;

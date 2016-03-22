@@ -9,7 +9,6 @@ var app = angular.module('veedorApp',
         'ngMdIcons',
         'ngRoute',
         'ngResource',
-		'md.data.table',
     ]);
 
 /* Routes Configuration */
