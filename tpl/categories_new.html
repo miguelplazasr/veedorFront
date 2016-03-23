@@ -1,38 +1,44 @@
-<md-card>
-<md-card-title>
-<md-card-title-text>
-<span class="md-headline">{{ title }}</span>
-      <span class="md-subhead">Sub header</span>
-</md-card-title-text>
-</md-card-title>
+<md-dialog>
 
-<md-card-content>
+    <form name="categoryForm" >
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>New Category</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <p></p>
+        <md-dialog-content style="max-width:800px;max-height:810px; ">
+            <div layout="column" ng-cloak>
 
-<form name="categoryForm" ng-submit="saveCategory(rsCategory)" novalidate>
+                <md-input-container class="">
+                    <label>Name</label>
+                    <input required name="name" ng-model="rsCategory.name">
+                    <div ng-messages="categoryForm.name.$error">
+                        <div ng-message="required">This is required.</div>
+                    </div>
+                </md-input-container>
 
-    <md-input-container>
-      <label>Name</label>
-      <input ng-model="rsCategory.name">
-    </md-input-container>
-	
-    <md-input-container>
-      <label>Description</label>
-      <input ng-model="rsCategory.description">
-    </md-input-container>
-	
-	<button>Send</button>
-	
-	
-</form>
+                <md-input-container class="">
+                    <label>Description</label>
+                    <input required name="description" ng-model="rsCategory.description">
+                    <div ng-messages="categoryForm.description.$error">
+                        <div ng-message="required">This is required.</div>
+                    </div>
+                </md-input-container>
+            </div>
+        </md-dialog-content>
 
-</md-card-content>
- <md-divider></md-divider>
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-click="saveCategory(rsCategory)" style="margin-right:20px;" ng-disabled="categoryForm.$invalid">
+                Create
+            </md-button>
+        </md-dialog-actions>
 
-<md-card-actions layout="row" layout-align="end center">
-      <md-button class="md-raised" aria-label="Add" ng-click="showAdd($event)" ng-href="/#/category/new">
-  	<ng-md-icon icon="add"></ng-md-icon>Add Category
-  </md-button>
 
-</md-card-actions>
-
-  </md-card>
+    </form>
+</md-dialog>

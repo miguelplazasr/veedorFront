@@ -9,7 +9,7 @@ app.factory('Category', function($resource) {
     var url = domain + '/api/categories/';
 
     var category = $resource(url + ':id', {
-    	id: '@id'
+    	id: '@id', category: '@category'
     }, 
 	{
         save: {
@@ -23,12 +23,19 @@ app.factory('Category', function($resource) {
 			method: 'GET',
 			url: url + 'new.json'
 		},
-		delete: {
-			method: 'DELETE',
-			params: {
-				id: '@id'
-			}
-		}
+        delete: {
+            method: 'DELETE',
+            params: {
+                id: '@id'
+            }
+        },
+        update: {
+            method: 'PUT',
+            params: {
+                id: '@id'
+            },
+            isArray: false
+        }
     });
 
     return category;

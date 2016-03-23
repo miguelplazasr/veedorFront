@@ -9,7 +9,6 @@ var app = angular.module('veedorApp',
         'ngMdIcons',
         'ngRoute',
         'ngResource',
-		'md.data.table',
     ]);
 
 /* Routes Configuration */
@@ -34,6 +33,10 @@ app.config(function ($routeProvider){
 /* Theming Configuration */
 app.config(function($mdThemingProvider){
 	$mdThemingProvider.theme('default')
-	.primaryPalette('pink')
-	.accentPalette('orange')
+	.primaryPalette('indigo', {
+            'default': '800'
+        })
+	.accentPalette('amber', {
+            'default': '500'
+        })
 })
