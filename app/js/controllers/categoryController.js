@@ -32,9 +32,23 @@ app.controller('CategoryCtrl',
                 }
             });
 
-        }
+        };
 
+        $scope.showDelete = function (rowCategory, ev) {
 
+            var confirm = $mdDialog.confirm()
+                .title('ADVERTENCIA!')
+                .textContent('Desea eliminar la categoría "' + rowCategory.name + '"?')
+                .ariaLabel('Eliminar categoría')
+                .targetEvent(ev)
+                .ok('Cancel')
+                .cancel('Ok');
+            $mdDialog.show(confirm).then(function() {
+                console.log('Cancel delete')
+            }, function() {
+                deleteCategory(rowCategory.id);
+            });
+        };
 
         $scope.showAdd = function (ev) {
 
@@ -46,6 +60,21 @@ app.controller('CategoryCtrl',
                 clickOutsideToClose: true,
                 locals: {
                     category: null
+                }
+            });
+
+        };
+
+
+        $scope.editCategory = function (rowCategory, ev) {
+            $mdDialog.show({
+                controller: DialogController,
+                templateUrl: 'tpl/categories_edit.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose: true,
+                locals: {
+                    category: rowCategory
                 }
             });
 
@@ -65,15 +94,21 @@ app.controller('CategoryCtrl',
             $scope.saveCategory = function (rsCategory) {
                 var newRecord = new Category(rsCategory);
                 newRecord.$save(function (resp, headers) {
-                    console.log(rsCategory);
                     updateCategories();
                     $mdDialog.hide();
                 })
             };
+            $scope.updateCategory = function (rsCategory) {
+
+                var newRecord = new Category(rsCategory);
+                newRecord.$update({id:rsCategory.id}, rsCategory);
+                updateCategories();
+                $mdDialog.hide();
+
+            };
         }
 
-
-        $scope.deleteCategory = function (id) {
+        function deleteCategory (id) {
 
             for (var i = 0, len = $scope.categories.length; i < len; i++) {
                 if ($scope.categories[i].id === id) {

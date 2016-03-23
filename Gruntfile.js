@@ -17,7 +17,7 @@ module.exports = function(grunt){
 					targetDir: 'app/lib',
 					layout: 'byComponent',
 					install: true,
-					verbos: true,
+					verbose: true,
 					cleanBowerDir: true
 				}
 			}
@@ -87,7 +87,6 @@ module.exports = function(grunt){
 	});
 
 // loadNpmTasks
-grunt.loadNpmTasks('grunt-serve');
 grunt.loadNpmTasks('grunt-bower-task');
 grunt.loadNpmTasks('grunt-contrib-uglify');
 grunt.loadNpmTasks('grunt-contrib-watch');

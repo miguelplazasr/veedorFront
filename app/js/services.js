@@ -9,7 +9,7 @@ app.factory('Category', function($resource) {
     var url = domain + '/api/categories/';
 
     var category = $resource(url + ':id', {
-    	id: '@id'
+    	id: '@id', category: '@category'
     }, 
 	{
         save: {
@@ -28,6 +28,13 @@ app.factory('Category', function($resource) {
             params: {
                 id: '@id'
             }
+        },
+        update: {
+            method: 'PUT',
+            params: {
+                id: '@id'
+            },
+            isArray: false
         }
     });
 
